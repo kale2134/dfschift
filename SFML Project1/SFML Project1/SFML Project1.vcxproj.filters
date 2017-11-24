@@ -15,8 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Źródło.cpp">
-      <Filter>Pliki nagłówkowe</Filter>
-    </ClCompile>
+    <ClCompile Include="Źródło.cpp" />
   </ItemGroup>
 </Project>
