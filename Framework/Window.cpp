@@ -1,15 +1,22 @@
 #include "Window.h"
-#include <SFML/Window.hpp>
+
+#include "Object.h"
+
+#include <iostream>
 
 Window::Window(int w, int h)
-: window(sf::VideoMode(w,h), "test xd") {}
+: sf::RenderWindow(sf::VideoMode(w,h), "test xd") {}
 
-void Window::loop() {
-    while(window.isOpen()) {
+void Window::loop(Object* o) {
+    while(isOpen()) {
         sf::Event event;
-        while(window.pollEvent(event)) {
+        while(pollEvent(event)) {
             if(event.type == sf::Event::Closed)
-                window.close();
+                close();
         }
+        clear(sf::Color::Blue);
+        draw(*o);
+        display();
     }
 }
+

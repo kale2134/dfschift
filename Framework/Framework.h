@@ -3,11 +3,8 @@
 #include "Window.h"
 
 class Framework {
-    Window window;
 public:
-    void draw();
-    void clearWindow();
-    void display();
+    Window window;
     
     void playSound();
     void playMusic();
