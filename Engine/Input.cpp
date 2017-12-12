@@ -23,8 +23,8 @@ void Input::HandleInput()
 
 void Input::CheckInput(std::string _x)
 {
-	if (_x == "left_key")
+	/*if (_x == "left_key")
 		PostMessage(0);
 	else if (_x == "right_key")
-		PostMessage(1);
+		PostMessage(1);*/
 }

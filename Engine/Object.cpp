@@ -36,6 +36,8 @@ void RenderableObject::SetTexture(sf::Texture t) {
 RenderableObject::RenderableObject(sf::Texture t) {
 	SetTexture(t);
 	sprite.setTexture(texture);
+	
+	sprite.setOrigin(texture.getSize().x/2.0, texture.getSize().y/2.0);
 }
 
 ///
@@ -63,6 +65,8 @@ void AnimatedObject::setAnimationProperties(int x,int y,int n) {
 	frame_x = x;
 	frame_y = y;
 	frames = n;
+	
+	sprite.setOrigin(frame_x/2.0, frame_y/2.0);
 	
 	frame = 0;
 	changeFrame(frame);
@@ -99,9 +103,7 @@ void AnimatedObject::animationStop() {
 AnimatedObject::AnimatedObject(sf::Texture t) : RenderableObject(t) {
 	animationRunning = false;
 	
-	frame_x = texture.getSize().x;
-	frame_y = texture.getSize().y;
-	
-	frames = 1;
+	setAnimationProperties(texture.getSize().x, texture.getSize().y, 1);
+
 	frame = 0;
 }

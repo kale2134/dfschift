@@ -6,7 +6,7 @@ Player::Player(sf::Texture t) : AnimatedObject(t) {
 	id = 0;
 	//x = 20;
 	//y = 20;
-	sprite.setPosition(20,20);
+	sprite.setPosition(400,240);
 	
 	onCreate();
 }
@@ -33,5 +33,15 @@ void Player::movePlayer()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		sprite.move(0,1);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		sprite.setScale(1.0f,1.0f);
+		sprite.move(-1,0);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		sprite.setScale(-1.0f,1.0f);
+		sprite.move(1,0);
 	}
 }
