@@ -2,10 +2,10 @@
 #include <iostream>
 #include "Object.h"
 
-class Player : public Object
+class Player : public AnimatedObject
 {
 public:
-	Player();
+	Player(sf::Texture);
 
 	void onCreate();
 	void onStep() override;

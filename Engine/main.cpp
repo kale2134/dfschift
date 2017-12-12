@@ -4,6 +4,8 @@
 #include "Input.h"
 #include "Audio.h"
 
+#include <chrono>
+
 int main()
 {
 	//sf::RenderWindow window(sf::VideoMode(800, 480), "DF App", sf::Style::Close);	
@@ -23,6 +25,11 @@ int main()
 		Audio *a = new Audio;
 		a->play();
 		*/
+		
+		//std::cout << std::chrono::duration_cast< std::chrono::duration<double> > (
+		//	std::chrono::milliseconds(1)
+		//).count();
+		
 		App* anApp = new App;
 		anApp->Run();
 }

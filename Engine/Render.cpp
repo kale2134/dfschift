@@ -1,20 +1,25 @@
 #include "Render.h"
-#include <windows.h>
+#include <iostream>
 #include "App.h"
 
 void Render::Draw()
 {
 	mApp->mWindow.clear(sf::Color::Black);
-	for (int i = 0; i < toDraw.size(); ++i)
-	{
-		sf::Sprite mBuffer= toDraw.at(i)->sprite;
+	for (auto& obj : toDraw) {
+		sf::Sprite mBuffer = obj->sprite;
 		mApp->mWindow.draw(mBuffer);
 	}
 }
 
-void Render::CreateObject(Object *_object)
+void Render::AddObject(Object *_object)
 {
-	toDraw.push_back(std::unique_ptr<Object>(_object));
+	RenderableObject* obj = dynamic_cast<RenderableObject*> (_object);
+	if(obj == nullptr) {
+		std::cerr << "Error: Tried to render unrenderable object." << std::endl;
+		return;
+	}
+	
+	toDraw.push_back(obj);
 }
 
 void Render::RemoveObject(Object *_object)

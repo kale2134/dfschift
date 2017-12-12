@@ -1,33 +1,37 @@
 #include "Player.h"
 #include "App.h"
 
-Player::Player()
-{
-	texture.loadFromFile("o.png");
+Player::Player(sf::Texture t) : AnimatedObject(t) {
+	//texture.loadFromFile("o.png");
 	id = 0;
-	x = 20;
-	y = 20;
+	//x = 20;
+	//y = 20;
+	sprite.setPosition(20,20);
+	
 	onCreate();
 }
 
 void Player::onCreate()
 {
+	setAnimationProperties(240,314,22);
+	animationStart(0.02);
 }
 
 void Player::onStep()
 {
-	Init();
+	//Init();
 	movePlayer();
+	animationUpdate();
 }
 
 void Player::movePlayer()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		y--;
+		sprite.move(0,-1);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		y++;
+		sprite.move(0,1);
 	}
 }

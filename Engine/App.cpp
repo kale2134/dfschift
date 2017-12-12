@@ -30,10 +30,14 @@ int App::Run()
 void App::GameLoop()
 {
 	// Load a sprite to display
-	Player *p = new Player;
+	sf::Texture temp;
+	temp.loadFromFile("j.png");
+	
+	Player *p = new Player(temp);
+	//p->setAnimationProperties(240,314,22);
 
 	mScene->AddElement(p);
-	mRender->CreateObject(p);
+	mRender->AddObject(p);
 	while (isRunning()) // to do: need to add more conditions (ex. stateManager.isRun etc...)
 	{
 		// to do: need to create class - event manager
@@ -43,6 +47,8 @@ void App::GameLoop()
 		
 		//mAudio->play();
 		mWindow.display();
+		
+		if(!mWindow.isOpen()) mRunning = false;
 	}
 }
 
