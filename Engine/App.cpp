@@ -38,6 +38,9 @@ void App::GameLoop()
 
 	mScene->AddElement(p);
 	mRender->AddObject(p);
+	
+	std::thread t(&App::fixed,this,&(mScene->SceneElements));
+	
 	while (isRunning()) // to do: need to add more conditions (ex. stateManager.isRun etc...)
 	{
 		// to do: need to create class - event manager
@@ -50,6 +53,8 @@ void App::GameLoop()
 		
 		if(!mWindow.isOpen()) mRunning = false;
 	}
+	
+	t.join();
 }
 
 void App::InitWindow()

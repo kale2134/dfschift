@@ -14,6 +14,10 @@ void Object::onStep()
 {
 }
 
+void Object::FixedUpdate()
+{
+}
+
 bool Object::isEqual(const Object &_object) const
 {
 	if (this->id == _object.id)
@@ -31,13 +35,12 @@ void Object::operator==(const Object &_object) const
 
 void RenderableObject::SetTexture(sf::Texture t) {
 	texture = t;
+	sprite.setOrigin(texture.getSize().x/2.0, texture.getSize().y/2.0);
 }
 
 RenderableObject::RenderableObject(sf::Texture t) {
 	SetTexture(t);
 	sprite.setTexture(texture);
-	
-	sprite.setOrigin(texture.getSize().x/2.0, texture.getSize().y/2.0);
 }
 
 ///

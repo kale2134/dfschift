@@ -13,6 +13,7 @@ public:
 	//void Init();
 	virtual void onCreate();
 	virtual void onStep();
+	virtual void FixedUpdate();
 
 	bool isEqual(const Object &_object) const;
 	void operator==(const Object &_object) const;

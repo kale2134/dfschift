@@ -24,24 +24,34 @@ void Player::onStep()
 	animationUpdate();
 }
 
-void Player::movePlayer()
+void Player::FixedUpdate()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	//std::cout << "<" << sprite.getPosition().x << ", " << sprite.getPosition().y << ">" << std::endl;
+	
+	if (up)
 	{
-		sprite.move(0,-1);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		sprite.move(0,-2);
+	} 
+	if (down)
 	{
-		sprite.move(0,1);
+		sprite.move(0,2);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (left)
 	{
 		sprite.setScale(1.0f,1.0f);
-		sprite.move(-1,0);
+		sprite.move(-2,0);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (right)
 	{
 		sprite.setScale(-1.0f,1.0f);
-		sprite.move(1,0);
+		sprite.move(2,0);
 	}
+}
+
+void Player::movePlayer()
+{
+	up = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
+	down = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+	left = sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+	right = sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
 }
